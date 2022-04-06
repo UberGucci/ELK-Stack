@@ -49,19 +49,24 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 |   136.50.150.238     | 
+|  Web 1   |   no                |   10.1.0.5           |
+|  Web 2   |   no                |       10.1.0.6       |
+|  Web 3   |   no                |           10.1.0.7   |
+| ELK VM   | no/yes              | 10.0.0.4/ My IP 5601 |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible is a automation tool that allows you to configure provision, and manage application deployment on an infinite amount of machines dependent on networks needs.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Installs docker.io to the ELK machine
+- Installs pip3 (python 3) 
+- Installs docker python module
+- Increase the virtual memory of the ELK machine
+- Download and launch the docker ELK container, configuring - publishing the ports for elasticsearch, logstash, kibana.
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -69,25 +74,23 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+Web 1 10.1.0.4
+Web 2 10.1.0.5
+Web 3 10.1.0.6
+ELK  10.0.0.4
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+- FileBeat 
+- MetricBeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat monitors logs or specified locations and forwards it to the ELK machine.
+- Metricbeat periodically collects metric data from your target service such as CPU or memory related metrics, and collect services running on this server. It can also be used to monitor other beats in the ELK stack itself. 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Copy the Playbook file to /etc/ansible.
+- Update the configuration file to include the IP address of the ELK machine as well as update the host file to contain the IP's of the ELK server or WEB server.
+- Run the playbook, and navigate to ELK servers public IP on port 5601 to check that the installation worked as expected.
