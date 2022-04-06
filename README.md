@@ -28,15 +28,14 @@ Load balancing ensures that the application will be highly available, in additio
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file systems of the VMs on the network, as well as watch system metrics, such as CPU usage; attempted SSH logins; sudo escalation failures; etc.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name                 | Function                   | IP Address | Operating System |
 |----------------------|----------------------------|------------|------------------|
-| Jump-Box-Provisioner | Gateway                    | 10.0.0.1   | Ubuntu LTS 18.04 |
-| Elk                  |   Application Server       | 10.1.0.4   | Ubuntu LTS 18.04 |
-| Web-1                |   Application Server       | 10.0.0.8   | Ubuntu LTS 18.04 |
-| Web 2                |   Application Server       | 10.0.0.9   | Ubuntu LTS 18.04 |
-| Web-3                |   Application Server       | 10.0.0.10  | Ubuntu LTS 18.04 |
+| Jump-Box-Provisioner | Gateway                    | 10.1.0.4   | Ubuntu LTS 18.04 |
+| Elk                  |   Application Server       | 10.0.0.4   | Ubuntu LTS 18.04 |
+| Web-1                |   Application Server       | 10.1.0.5   | Ubuntu LTS 18.04 |
+| Web 2                |   Application Server       | 10.1.0.6   | Ubuntu LTS 18.04 |
+| Web-3                |   Application Server       | 10.1.0.7  | Ubuntu LTS 18.04 |
 
 ### Access Policies
 
